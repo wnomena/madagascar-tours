@@ -1,10 +1,10 @@
 import { X, Clock, TrendingUp, Euro, Check, MapPin, Calendar } from 'lucide-react';
-import { type Tour } from '../lib/supabase';
 import { useState } from 'react';
 import BookingForm from './BookingForm';
+import type { Circui_Model } from '../../personnalised_model/database_models';
 
 interface TourDetailProps {
-  tour: Tour;
+  tour: Circui_Model;
   onClose: () => void;
 }
 
@@ -25,7 +25,7 @@ export default function TourDetail({ tour, onClose }: TourDetailProps) {
 
             <div className="relative h-96 rounded-t-xl overflow-hidden">
               <img
-                src={tour.image_url}
+                src={tour.image}
                 alt={tour.title}
                 className="w-full h-full object-cover"
               />
@@ -71,10 +71,10 @@ export default function TourDetail({ tour, onClose }: TourDetailProps) {
               <div>
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">Points forts</h2>
                 <ul className="space-y-3">
-                  {tour.highlights.map((highlight, index) => (
-                    <li key={index} className="flex items-start gap-3">
+                  {tour.adrenaline.map(({id, content}) => (
+                    <li key={id} className="flex items-start gap-3">
                       <Check className="h-5 w-5 text-emerald-600 flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-700">{highlight}</span>
+                      <span className="text-gray-700">{content}</span>
                     </li>
                   ))}
                 </ul>
@@ -87,18 +87,18 @@ export default function TourDetail({ tour, onClose }: TourDetailProps) {
                 Itinéraire détaillé
               </h2>
               <div className="space-y-4">
-                {tour.itinerary.map((day, index) => (
+                {tour.itinerary.map(({day, id,place,description}) => (
                   <div
-                    key={index}
+                    key={id}
                     className="bg-gradient-to-r from-emerald-50 to-teal-50 p-6 rounded-lg hover:shadow-md transition"
                   >
                     <div className="flex items-center gap-3 mb-2">
                       <div className="bg-emerald-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">
-                        {day.day}
+                        {day}
                       </div>
-                      <h3 className="text-xl font-semibold text-gray-900">{day.title}</h3>
+                      <h3 className="text-xl font-semibold text-gray-900">{place}</h3>
                     </div>
-                    <p className="text-gray-700 ml-13 leading-relaxed">{day.description}</p>
+                    <p className="text-gray-700 ml-13 leading-relaxed">{description}</p>
                   </div>
                 ))}
               </div>
@@ -108,10 +108,10 @@ export default function TourDetail({ tour, onClose }: TourDetailProps) {
               <div>
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">Inclus dans le prix</h2>
                 <ul className="space-y-2">
-                  {tour.included.map((item, index) => (
-                    <li key={index} className="flex items-start gap-2">
+                  {tour.included.map(({id, content}) => (
+                    <li key={id} className="flex items-start gap-2">
                       <Check className="h-5 w-5 text-emerald-600 flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-700">{item}</span>
+                      <span className="text-gray-700">{content}</span>
                     </li>
                   ))}
                 </ul>
@@ -120,10 +120,10 @@ export default function TourDetail({ tour, onClose }: TourDetailProps) {
               <div>
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">Équipement nécessaire</h2>
                 <ul className="space-y-2">
-                  {tour.equipment.map((item, index) => (
-                    <li key={index} className="flex items-start gap-2">
+                  {tour.equipment.map(({id, equipment}) => (
+                    <li key={id} className="flex items-start gap-2">
                       <Check className="h-5 w-5 text-gray-600 flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-700">{item}</span>
+                      <span className="text-gray-700">{equipment}</span>
                     </li>
                   ))}
                 </ul>

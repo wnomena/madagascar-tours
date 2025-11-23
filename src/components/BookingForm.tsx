@@ -1,10 +1,11 @@
 import  { useState } from 'react';
 import { X, Calendar, Users, Mail, Phone, User, MessageSquare } from 'lucide-react';
-import { supabase, type Tour } from '../lib/supabase';
 import React from 'react';
+import { type Circui_Model } from '../../personnalised_model/database_models';
+import { _Axios } from '../../personnalised_model/fetch_class';
 
 interface BookingFormProps {
-  tour: Tour;
+  tour: Circui_Model;
   onClose: () => void;
 }
 
@@ -27,24 +28,14 @@ export default function BookingForm({ tour, onClose }: BookingFormProps) {
     setError('');
 
     try {
-      const { error: insertError } = await supabase.from('bookings').insert({
-        tour_id: tour.id,
-        full_name: formData.full_name,
-        email: formData.email,
-        phone: formData.phone,
-        travelers: formData.travelers,
-        start_date: formData.start_date,
-        message: formData.message,
-        total_price: tour.price * formData.travelers,
-        status: 'pending',
-      });
-
-      if (insertError) throw insertError;
-
-      setSuccess(true);
-      setTimeout(() => {
-        onClose();
-      }, 3000);
+      _Axios.Set_Contact({name:formData.full_name,mail:formData.email,number:formData.phone,number_of_person:formData.travelers,begining:formData.start_date,total_price:tour.price * formData.travelers,subject:undefined,body:formData.message}).then(() => {
+        setSuccess(true);
+        setTimeout(() => {
+          onClose();
+        }, 3000);
+      }).catch(function(err) {
+        throw Error(err)
+      })
     } catch (err) {
       console.error('Error creating booking:', err);
       setError('Une erreur est survenue. Veuillez réessayer.');

@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
-import { supabase, type Tour } from '../lib/supabase';
+import {type Circui_Model} from "../../personnalised_model/database_models"
+import { _Axios } from "../../personnalised_model/fetch_class"
 import TourCard from './TourCard';
 
 interface ToursProps {
-  onTourSelect: (tour: Tour) => void;
+  onTourSelect: (tour: Circui_Model) => void;
 }
 
 export default function Tours({ onTourSelect }: ToursProps) {
-  const [tours, setTours] = useState<Tour[]>([]);
+  const [tours, setTours] = useState<Circui_Model[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -16,14 +17,9 @@ export default function Tours({ onTourSelect }: ToursProps) {
 
   async function fetchTours() {
     try {
-      const { data, error } = await supabase
-        .from('tours')
-        .select('*')
-        .eq('featured', true)
-        .order('created_at', { ascending: false });
-
-      if (error) throw error;
-      setTours(data || []);
+      await _Axios.Get_Circuit().then((element) => {
+        setTours(element.data.data)
+      });
     } catch (error) {
       console.error('Error fetching tours:', error);
     } finally {

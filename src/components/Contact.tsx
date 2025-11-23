@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Mail, Phone, MapPin, Send, Clock } from 'lucide-react';
-import { supabase } from '../lib/supabase';
+import { _Axios } from '../../personnalised_model/fetch_class';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -20,20 +20,14 @@ export default function Contact() {
     setSuccess(false);
 
     try {
-      const { error: insertError } = await supabase
-        .from('contact_messages')
-        .insert({
-          name: formData.name,
-          email: formData.email,
-          subject: formData.subject,
-          message: formData.message,
-        });
 
-      if (insertError) throw insertError;
-
+    _Axios.Set_Contact({name:formData.name,mail:formData.email,number:undefined,number_of_person:undefined,begining:undefined,total_price:undefined,subject:undefined,body:formData.message}).then(()=> {
       setSuccess(true);
       setFormData({ name: '', email: '', subject: '', message: '' });
       setTimeout(() => setSuccess(false), 5000);
+    }).catch((err)=> {
+      throw Error(err)
+    })
     } catch (err) {
       console.error('Error sending message:', err);
       setError('Une erreur est survenue. Veuillez réessayer.');

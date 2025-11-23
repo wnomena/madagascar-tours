@@ -1,137 +1,65 @@
-//Classe pour les jointures de cirtcuit
-class Itinerary {
-    id:number
-    place: string
-    order_id:number
-
-    constructor(
-            id:number,
-    place: string,
-    order_id:number,
-    ) {
-        this.id = id
-        this.place = place
-        this.order_id = order_id
-    }
+type Itinerary = {
+    day:number,id:number,place:string,order_id:number,circuit_id:number,description:string
 }
-class Adrenaline {
-    id:number
-    content: string
-    circuit_id:number
-
-    constructor(
-        id:number,
-    content: string,
-    circuit_id:number,
-    ) {
-        this.id = id
-        this.content = content
-        this.circuit_id = circuit_id
-    }
+type Equipement = {
+    id:number,equipment:string,circuit_id:number
 }
-
-class Included {
-    id:number
-    content: string
-    circuit_id:number
-
-    constructor(
-        id:number,
-    content: string,
-    circuit_id:number,
-    ) {
-        this.id = id
-        this.content = content
-        this.circuit_id = circuit_id
-    }
+type Adrenaline = {
+    id:number,content:string,circuit_id:number
 }
-
-class Equipment {
-    id:number
-    content: string
-    circuit_id:number
-
-    constructor(
-        id:number,
-    content: string,
-    circuit_id:number,
-    ) {
-        this.id = id
-        this.content = content
-        this.circuit_id = circuit_id
-    }
-}
-// Classe principale
-export class Personnalised_Fetch_For_Circuits {
-    id:number
-    title:string
-    subtitle:string
-    duration:string
-    difficulty:number
-    price:number
-    image:string
-    itinerary: Itinerary[]
-    adrenaline: Adrenaline[]
-    included: Included[]
-    equipment: Equipment[]
-
-
-    constructor(
+export type Testimonial = {
+  id: string;
+  author_name: string;
+  tour_id: string;
+  rating: number;
+  comment: string;
+  created_at: string;
+};
+export type Circui_Model = {
         id:number,
         title:string,
         subtitle:string,
+        description:string,
         duration:string,
         difficulty:number,
-        price:number,
         image:string,
-        itinerary: Itinerary[],
+        price:number,
+        itinerary:Itinerary[],
+        equipment:Equipement[],
         adrenaline: Adrenaline[],
-        included: Included[],
-        equipment: Equipment[]
-    ) {
-    this.id = id
-    this.title = title
-    this.subtitle = subtitle
-    this.duration = duration
-    this.difficulty = difficulty
-    this.price = price
-    this.image = image
-    this.itinerary = itinerary
-    this.adrenaline = adrenaline
-    this.included = included
-    this.equipment = equipment
-    
-    }
+        included: Adrenaline[]
 }
 
-export class Contact_Class {
-    id:number
+export type Fetch_Response = {
+    code : Int16Array,
+    data:Circui_Model[],
+    error: string
+    
+}
+
+export class Contact_Model  {
     name:string
-    subject:string
+    subject:string | undefined
     body:string
     number:string | undefined
     begining: string | undefined
     number_of_person: number | undefined
-    circuit_id: number | undefined
+    mail:string
+    total_price : number | undefined
 
-    constructor(
-        id:number,
-        name:string,
-        subject:string,
-        body:string,
-        number:string | undefined,
-        begining: string | undefined,
-        number_of_person: number | undefined,
-        circuit_id: number | undefined
-
-    ) {
-        this.id = id
+    constructor(mail:string  ,  total_price:number | undefined,  name:string,    subject:string | undefined,    body:string,    number:string | undefined,    begining: string | undefined,    number_of_person: number | undefined) {
         this.name = name
         this.subject = subject
         this.body = body
         this.number = number
         this.begining = begining
         this.number_of_person = number_of_person
-        this.circuit_id = circuit_id
+        this.mail = mail
+        this.total_price = total_price
+
+
     }
-} 
+
+
+    
+}

@@ -1,9 +1,9 @@
 import { Clock, TrendingUp, Euro } from 'lucide-react';
-import { type Tour } from '../lib/supabase';
+import type { Circui_Model } from '../../personnalised_model/database_models';
 
 interface TourCardProps {
-  tour: Tour;
-  onSelect: (tour: Tour) => void;
+  tour: Circui_Model;
+  onSelect: (tour: Circui_Model) => void;
 }
 
 export default function TourCard({ tour, onSelect }: TourCardProps) {
@@ -11,12 +11,12 @@ export default function TourCard({ tour, onSelect }: TourCardProps) {
     <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
       <div className="relative h-64 overflow-hidden">
         <img
-          src={tour.image_url}
+          src={tour.image}
           alt={tour.title}
           className="w-full h-full object-cover transform hover:scale-110 transition duration-500"
         />
         <div className="absolute top-4 right-4 bg-emerald-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
-          {tour.featured ? 'Populaire' : 'Nouveau'}
+          Populaire
         </div>
       </div>
 
