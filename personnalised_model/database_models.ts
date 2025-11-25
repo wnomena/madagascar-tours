@@ -58,8 +58,5 @@ export class Contact_Model  {
         this.total_price = total_price
 
 
-    }
-
-
-    
+    }  
 }

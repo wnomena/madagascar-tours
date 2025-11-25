@@ -18,6 +18,7 @@ export default function Tours({ onTourSelect }: ToursProps) {
   async function fetchTours() {
     try {
       await _Axios.Get_Circuit().then((element) => {
+        console.log(element.data.data)
         setTours(element.data.data)
       });
     } catch (error) {

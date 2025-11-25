@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+{ /*import { useEffect, useState } from 'react';
 import { Calendar, User } from 'lucide-react';
 import { supabase, type BlogPost } from '../lib/supabase';
 
@@ -88,3 +88,4 @@ export default function Blog() {
     </section>
   );
 }
+*/ }

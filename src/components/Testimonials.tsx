@@ -1,28 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Star, Quote } from 'lucide-react';
-import { supabase, type Testimonial } from '../lib/supabase';
+import type { Testimonial } from '../../personnalised_model/database_models';
 
 export default function Testimonials() {
-  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
+  const [testimonials] = useState<Testimonial[]>([]);
 
-  useEffect(() => {
-    fetchTestimonials();
-  }, []);
 
-  async function fetchTestimonials() {
-    try {
-      const { data, error } = await supabase
-        .from('testimonials')
-        .select('*')
-        .order('created_at', { ascending: false })
-        .limit(6);
-
-      if (error) throw error;
-      setTestimonials(data || []);
-    } catch (error) {
-      console.error('Error fetching testimonials:', error);
-    }
-  }
 
   return (
     <section id="temoignages" className="py-20 bg-white">
