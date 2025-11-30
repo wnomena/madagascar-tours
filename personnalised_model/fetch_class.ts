@@ -6,6 +6,7 @@ export class _Axios {
         return axios.get<Fetch_Response>(this.#link)
     }
     static Set_Contact(Data:Contact_Model):Promise<AxiosResponse<Fetch_Response>> {
-        return axios.get<Fetch_Response>(this.#link,{data : Data})
+        console.log(Data)
+        return axios.post<Fetch_Response>(this.#link,Data)
     }
 }

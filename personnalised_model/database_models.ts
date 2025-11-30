@@ -2,7 +2,7 @@ type Itinerary = {
     day:number,id:number,place:string,order_id:number,circuit_id:number,description:string
 }
 type Equipement = {
-    id:number,equipment:string,circuit_id:number
+    id:number,equipement:string,circuit_id:number
 }
 type Adrenaline = {
     id:number,content:string,circuit_id:number
@@ -27,7 +27,7 @@ export type Circui_Model = {
         itinerary:Itinerary[],
         equipment:Equipement[],
         adrenaline: Adrenaline[],
-        included: Adrenaline[]
+        include_in_price: Adrenaline[]
 }
 
 export type Fetch_Response = {
@@ -46,10 +46,12 @@ export class Contact_Model  {
     number_of_person: number | undefined
     mail:string
     total_price : number | undefined
+    circuit_id : number | undefined
 
-    constructor(mail:string  ,  total_price:number | undefined,  name:string,    subject:string | undefined,    body:string,    number:string | undefined,    begining: string | undefined,    number_of_person: number | undefined) {
+    constructor(mail:string  , circuit_id : number | undefined , total_price:number | undefined,  name:string,    subject:string | undefined,    body:string,    number:string | undefined,    begining: string | undefined,    number_of_person: number | undefined) {
         this.name = name
         this.subject = subject
+        this.circuit_id = circuit_id
         this.body = body
         this.number = number
         this.begining = begining

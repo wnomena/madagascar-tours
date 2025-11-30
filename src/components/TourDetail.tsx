@@ -1,5 +1,5 @@
 import { X, Clock, TrendingUp, Euro, Check, MapPin, Calendar } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import BookingForm from './BookingForm';
 import type { Circui_Model } from '../../personnalised_model/database_models';
 
@@ -10,7 +10,9 @@ interface TourDetailProps {
 
 export default function TourDetail({ tour, onClose }: TourDetailProps) {
   const [showBooking, setShowBooking] = useState(false);
-
+  useEffect(() => {
+    console.log(tour)
+  },[tour])
   return (
     <div className="fixed inset-0 bg-black/50 z-50 overflow-y-auto">
       <div className="min-h-screen px-4 py-8">
@@ -108,7 +110,7 @@ export default function TourDetail({ tour, onClose }: TourDetailProps) {
               <div>
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">Inclus dans le prix</h2>
                 <ul className="space-y-2">
-                  {tour.included.map(({id, content}) => (
+                  {tour.include_in_price.map(({id, content}) => (
                     <li key={id} className="flex items-start gap-2">
                       <Check className="h-5 w-5 text-emerald-600 flex-shrink-0 mt-0.5" />
                       <span className="text-gray-700">{content}</span>
@@ -120,10 +122,10 @@ export default function TourDetail({ tour, onClose }: TourDetailProps) {
               <div>
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">Équipement nécessaire</h2>
                 <ul className="space-y-2">
-                  {tour.equipment.map(({id, equipment}) => (
+                  {tour.equipment.map(({id, equipement}) => (
                     <li key={id} className="flex items-start gap-2">
                       <Check className="h-5 w-5 text-gray-600 flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-700">{equipment}</span>
+                      <span className="text-gray-700">{equipement}</span>
                     </li>
                   ))}
                 </ul>
