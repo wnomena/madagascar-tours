@@ -62,3 +62,7 @@ export class Contact_Model  {
 
     }  
 }
+
+export function Order(data:Itinerary[]) {
+    return data.sort((a,b) => a.circuit_id - b.circuit_id)
+}

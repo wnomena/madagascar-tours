@@ -1,6 +1,7 @@
 import { X, Clock, TrendingUp, Euro, Check, MapPin, Calendar } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import BookingForm from './BookingForm';
+
 import type { Circui_Model } from '../../personnalised_model/database_models';
 
 interface TourDetailProps {
@@ -10,6 +11,9 @@ interface TourDetailProps {
 
 export default function TourDetail({ tour, onClose }: TourDetailProps) {
   const [showBooking, setShowBooking] = useState(false);
+  const itinerary_order = useMemo(() => {
+    return tour.itinerary.sort((a,b) => a.circuit_id - b.circuit_id)
+},[tour.itinerary])
   useEffect(() => {
     console.log(tour)
   },[tour])
@@ -89,7 +93,7 @@ export default function TourDetail({ tour, onClose }: TourDetailProps) {
                 Itinéraire détaillé
               </h2>
               <div className="space-y-4">
-                {tour.itinerary.map(({day, id,place,description}) => (
+                {itinerary_order.map(({day, id,place,description}) => (
                   <div
                     key={id}
                     className="bg-gradient-to-r from-emerald-50 to-teal-50 p-6 rounded-lg hover:shadow-md transition"
