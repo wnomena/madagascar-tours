@@ -64,5 +64,10 @@ export class Contact_Model  {
 }
 
 export function Order(data:Itinerary[]) {
-    return data.sort((a,b) => a.circuit_id - b.circuit_id)
+    const data2:Itinerary[] = []
+    data.forEach((element) => {
+        data2.splice(element.order_id - 1,0,element)
+    })
+    console.log(data2)
+    return data2
 }
