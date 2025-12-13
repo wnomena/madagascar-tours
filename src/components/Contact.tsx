@@ -21,7 +21,10 @@ export default function Contact() {
 
     try {
 
-    _Axios.Set_Contact({name:formData.name,mail:formData.email,number:undefined,number_of_person:undefined,begining:undefined,total_price:undefined,subject:undefined,body:formData.message}).then(()=> {
+    _Axios.Set_Contact({
+      name: formData.name, mail: formData.email, number: undefined, number_of_person: undefined, begining: undefined, total_price: undefined, body: formData.message,
+      circuit_id: undefined,subject : formData.subject
+    }).then(()=> {
       setSuccess(true);
       setFormData({ name: '', email: '', subject: '', message: '' });
       setTimeout(() => setSuccess(false), 5000);
