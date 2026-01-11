@@ -45,10 +45,9 @@ export class Contact_Model  {
     begining: string | undefined
     number_of_person: number | undefined
     mail:string
-    total_price : number | undefined
     circuit_id : number | undefined
 
-    constructor(mail:string  , circuit_id : number | undefined , total_price:number | undefined,  name:string,    subject:string | undefined,    body:string,    number:string | undefined,    begining: string | undefined,    number_of_person: number | undefined) {
+    constructor(mail:string  , circuit_id : number | undefined , name:string,    subject:string | undefined,    body:string,    number:string | undefined,    begining: string | undefined,    number_of_person: number | undefined) {
         this.name = name
         this.subject = subject
         this.circuit_id = circuit_id
@@ -57,7 +56,6 @@ export class Contact_Model  {
         this.begining = begining
         this.number_of_person = number_of_person
         this.mail = mail
-        this.total_price = total_price
 
 
     }  

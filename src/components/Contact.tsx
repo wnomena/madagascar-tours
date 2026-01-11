@@ -22,7 +22,7 @@ export default function Contact() {
     try {
 
     _Axios.Set_Contact({
-      name: formData.name, mail: formData.email, number: undefined, number_of_person: undefined, begining: undefined, total_price: undefined, body: formData.message,
+      name: formData.name, mail: formData.email, number: undefined, number_of_person: undefined, begining: undefined, body: formData.message,
       circuit_id: undefined,subject : formData.subject
     }).then(()=> {
       setSuccess(true);
