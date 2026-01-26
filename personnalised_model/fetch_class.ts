@@ -1,7 +1,7 @@
 import axios, { type AxiosResponse } from "axios"
 import type { Contact_Model, Fetch_Response } from "./database_models"
 export class _Axios {
-    static #link = "http://localhost:8000"
+    static #link = "http://localhost:5000"
     static Get_Circuit():Promise<AxiosResponse<Fetch_Response>> {
         return axios.get<Fetch_Response>(this.#link)
     }

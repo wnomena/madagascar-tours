@@ -30,9 +30,26 @@ export type Circui_Model = {
         include_in_price: Adrenaline[]
 }
 
+type Tour = {
+        id:number,
+        title:string,
+        subtitle:string,
+        description:string,
+        duration:string,
+        difficulty:number,
+        image:string,
+        price:number
+}
+export type Circuit_Model = {
+        circuit: Tour[],
+        itinerary:Itinerary[],
+        equipment:Equipement[],
+        adrenaline: Adrenaline[],
+        include_in_price: Adrenaline[]
+}
 export type Fetch_Response = {
     code : Int16Array,
-    data:Circui_Model[],
+    data:Circuit_Model,
     error: string
     
 }

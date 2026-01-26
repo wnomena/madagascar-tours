@@ -13,12 +13,17 @@ export default function Tours({ onTourSelect }: ToursProps) {
 
   useEffect(() => {
     fetchTours();
-  }, []);
+    console.log(tours)
+  },[]);
 
   async function fetchTours() {
     try {
       await _Axios.Get_Circuit().then((element) => {
-        setTours(element.data.data)
+        console.log(element.data.data)
+        const list_of_modelised = element.data.data
+        list_of_modelised.circuit.forEach((element) => {
+            setTours([...tours,{id : element.id,description: element.description,title:element.title,duration: element.duration,difficulty : element.difficulty,image : element.image,price : element.price,subtitle: element.subtitle,equipment: [...list_of_modelised.equipment.filter((element2) => element2.circuit_id == element.id)],itinerary: [...list_of_modelised.itinerary.filter((element3) => element3.circuit_id == element.id)],adrenaline : [...list_of_modelised.adrenaline.filter((element4) => element4.circuit_id == element.id)],include_in_price : [...list_of_modelised.adrenaline.filter((element4) => element4.circuit_id == element.id)]}])
+        })
       });
     } catch (error) {
       console.error('Error fetching tours:', error);

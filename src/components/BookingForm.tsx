@@ -28,7 +28,7 @@ export default function BookingForm({ tour, onClose }: BookingFormProps) {
     setError('');
 
     try {
-      _Axios.Set_Contact({circuit_id:tour.id,name:formData.full_name,mail:formData.email,number:formData.phone,number_of_person:formData.travelers,begining:formData.start_date,total_price:tour.price * formData.travelers,subject:undefined,body:formData.message}).then(() => {
+      _Axios.Set_Contact({circuit_id:tour.id,name:formData.full_name,mail:formData.email,number:formData.phone,number_of_person:formData.travelers,begining:formData.start_date,subject:undefined,body:formData.message}).then(() => {
         setSuccess(true);
         setTimeout(() => {
           onClose();
