@@ -1,75 +1,59 @@
-# React + TypeScript + Vite
+# Madagascar Tours - Frontend React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📋 Présentation
 
-Currently, two official plugins are available:
+Application frontend moderne construite avec React et TypeScript pour l'agence Madagascar Tours. Cette plateforme présente l'intégralité des circuits touristiques disponibles, permet aux utilisateurs d'explorer des destinations détaillées et facilite les interactions pour les réservations.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🎯 Objectif
 
-## React Compiler
+Créer une expérience utilisateur fluide et réactive pour présenter les services touristiques de Madagascar, permettant aux clients de découvrir les circuits disponibles, consulter les détails et initier des réservations.
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## 🛠️ Stack Technique
 
-Note: This will impact Vite dev & build performances.
+- **Framework** : React 19.2.0
+- **Langage** : TypeScript 5.9.3
+- **Build Tool** : Vite 7.2.2
+- **Styling** : Tailwind CSS 4.1.17
+- **Backend Supabase** : @supabase/supabase-js 2.81.1
+- **Client HTTP** : Axios 1.13.2
+- **Icônes** : Lucide React 0.553.0
+- **Linting** : ESLint 9.39.1
 
-## Expanding the ESLint configuration
+## 📦 Composants du Projet
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Architecture Frontend
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **Pages de Circuits** : Catalogue complet des circuits touristiques avec filtres
+- **Détails des Destinations** : Pages détaillées pour chaque circuit avec galeries
+- **Formulaires de Réservation** : Interface de réservation intuitive
+- **Galerie d'Images** : Showcase des photos de voyage
+- **Navigation Responsive** : Menu adaptatif pour tous les écrans
+- **Intégration Backend** : Connexion avec Supabase pour données et authentification
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🚀 Fonctionnalités Principales
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+✅ Catalogue des circuits touristiques complet
+✅ Filtrage et recherche de circuits
+✅ Galeries d'images haute qualité
+✅ Système de réservation intégré
+✅ Authentification utilisateur avec Supabase
+✅ Interface responsive et mobile-friendly
+✅ Optimisation des performances avec Vite
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🔧 Installation & Utilisation  
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+# Installation des dépendances
+npm install
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+# Mode développement
+npm run dev
+
+# Linting du code
+npm run lint
+
+# Build production
+npm run build
+
+# Aperçu du build
+npm run preview
